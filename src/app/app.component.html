@@ -1,0 +1,90 @@
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <div class="nav-desktop">
+            <a id="logo-container" href="index.html" class="brand-logo">
+                <img src="../assets/img/logo.jpg" height="100" width="100">
+            </a>
+            <ul class="right light hide-on-med-and-down">
+                <li><a routerLink="/home" routerLinkActive="selected">Home</a></li>
+                <li><a routerLink="/news" routerLinkActive="selected">News</a></li>
+                <li><a routerLink="/events">Information</a></li>
+                <li><a routerLink="/events" routerLinkActive="selected">Termine</a></li>
+                <li *ngIf="user?.admin"><a routerLink="/admin" routerLinkActive="selected">Admin</a></li>
+                <li *ngIf="user"><a id="login-toggle" routerLink="/login" routerLinkActive="selected">{{user?.firstname + ' ' + user?.lastname}}<i class="material-icons right login">person</i></a></li>
+                <li *ngIf="!user"><a id="login-toggle" routerLink="/login" routerLinkActive="selected">Login<i class="material-icons right login">person</i></a></li>
+            </ul>
+        </div>
+        <a href="#" id="btn-sidenav-demo" class="button-collapse"><i class="large material-icons">menu</i></a>
+    </div>
+</nav>
+
+<mz-sidenav #sidenav [id]="'sidenav'" [collapseButtonId]="'btn-sidenav-demo'" [edge]="'left'" [closeOnClick]="true">
+    <mz-sidenav-header *ngIf="user">
+      <div class="user-view">
+        <img class="circle avatar" src="../assets/img/user-img.jpg">
+        <div class="white-text name">{{user?.firstname + ' ' + user?.lastname}}</div>
+        <div class="white-text email">{{user?.email}}</div>
+      </div>
+    </mz-sidenav-header>
+
+    <mz-sidenav-link>
+        <a routerLink="/home">Home</a>
+    </mz-sidenav-link>
+
+    <mz-sidenav-link>
+        <a routerLink="/news">News</a>
+    </mz-sidenav-link>
+
+    <mz-sidenav-link>
+        <a routerLink="/events">Informationen</a>
+    </mz-sidenav-link>
+
+    <mz-sidenav-link>
+        <a routerLink="/events">Termine</a>
+    </mz-sidenav-link>
+
+    <mz-sidenav-divider></mz-sidenav-divider>
+    
+    <div *ngIf="!user">
+        <mz-sidenav-link>
+            <a routerLink="/login">Login</a>
+        </mz-sidenav-link>
+    </div>
+    <div *ngIf="user">
+        <mz-sidenav-link>
+            <a routerLink="/events">Meine Trainings</a>
+        </mz-sidenav-link>
+    
+        <mz-sidenav-link>
+            <a routerLink="/events">Mein Profil</a>
+        </mz-sidenav-link>
+
+        <div *ngIf="user.admin">
+            <mz-sidenav-link>
+                <a routerLink="/admin">Administration</a>
+            </mz-sidenav-link>
+        </div>
+        
+        <mz-sidenav-link>
+            <a routerLink="/login">Logout</a>
+        </mz-sidenav-link>
+    </div>
+</mz-sidenav>
+
+<router-outlet></router-outlet>
+<toaster-container [toasterconfig]="config"></toaster-container>
+
+<footer class="page-footer teal">
+    <div class="footer-copyright grey darken-4">
+      <div class="container">
+          <span class="copyright">&copy;2018 crossthenature</span>    
+          <span class="data"><a href="#" class="grey-text text-lighten-2">Datenschutz</a></span>       
+          <span class="impressum"><a href="#" class="grey-text text-lighten-2">Impressum</a></span>
+          <div class="icons right hide-on-small-only">
+            <img src="assets/img/twitter.png" height="25" width="25">
+            <img src="assets/img/facebook.png" height="25" width="25">
+            <img src="assets/img/instagram.png" height="25" width="25">
+          </div>          
+      </div>
+    </div>
+</footer>

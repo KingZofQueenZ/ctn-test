@@ -1,0 +1,41 @@
+
+// Details
+.details {
+    margin-top:20px;
+
+    .button-anmeldung {
+        height: 120px;
+
+        .btn {
+            margin: auto;
+        }
+    }
+
+    .detail-title {
+        margin-bottom: 0;
+    }
+
+    .detail-subtitle {
+        line-height: 32px;
+    }
+
+    .anmeldungen {
+        margin-top:20px;
+
+        .collection .collection-item.avatar {
+            min-height: 55px;
+    
+            img {
+                top: 7px;
+            }
+        }
+    }
+
+    .probetraining {
+        margin-top:20px;
+    
+        a {
+            margin-top: 20px;
+        }
+    } 
+}

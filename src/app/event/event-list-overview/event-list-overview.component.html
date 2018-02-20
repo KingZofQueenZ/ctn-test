@@ -1,0 +1,46 @@
+<div class="parallax hide-on-med-and-down">
+  <div class="container">
+    <h1 class="header center teal-text">Trainings und Termine</h1>
+    <div class="row center">
+      <h5 class="header white-text col s12 light">&laquo;If it doesn´t challenge you, it doesn´t change you.&raquo;</h5>
+    </div>
+  </div>
+</div>
+
+<!-- Event Cards -->
+<div class="container events" *ngIf="dateArray.length" style="height:100%" infiniteScroll
+[infiniteScrollDistance]="0"
+(scrolled)="onScroll()">
+  <div class="row">
+    <div class="col s12">
+      <h3 class="header teal-text center-on-mobile">Die nächsten Workouts und Termine</h3>
+    </div>
+    <div class="col s12 flow-text">
+      Für Probetrainings, klicke bitte auf den gewünschten Termin und melde dich über das Anmeldeformular an. Solltest du doch nicht teilnehmen können, melde dich bitte bei unseren Coaches wieder ab!
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="row event-cards">
+    <div *ngFor="let event of events" >
+      <div class="col s12 {{getWidth(event)}}">
+          <app-event-list-item [event]="event"></app-event-list-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="noEvents">
+    <div class="row">
+      <div class="col s12">
+        <p class="flow-text">Es gibt zurzeit leider keine Termine!</p>
+      </div>
+    </div>
+</div>
+
+<div class="container spinner" *ngIf="!events.length && !noEvents">
+  <div class="row center">
+    <mz-spinner
+      [size]="'big'">
+    </mz-spinner>
+  </div>
+</div>
